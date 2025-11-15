@@ -2,6 +2,12 @@ import streamlit as st
 import numpy as np
 import pickle
 import pandas as pd
+import os
+
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "rf_model.pkl")
+
+with open(MODEL_PATH, "rb") as f:
+    model = pickle.load(f)
 
 # Load saved model, scaler
 model = pickle.load(open("rf_model.pkl", 'rb'))
@@ -142,3 +148,4 @@ if predict:
         </p>
     </div>
     """, unsafe_allow_html=True)
+
