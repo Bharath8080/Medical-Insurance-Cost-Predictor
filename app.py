@@ -2,20 +2,10 @@ import streamlit as st
 import numpy as np
 import pickle
 import pandas as pd
-import os
 
-# Correct model path
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "rf_model.pkl")
-SCALER_PATH = os.path.join(os.path.dirname(__file__), "scaler.pkl")
-
-# Load model safely
-with open(MODEL_PATH, "rb") as f:
-    model = pickle.load(f)
-
-# Load scaler safely
-with open(SCALER_PATH, "rb") as s:
-    scaler = pickle.load(s)
-
+# Load saved model, scaler
+model = pickle.load(open("rf_model.pkl", 'rb'))
+scaler = pickle.load(open("scaler.pkl", 'rb'))
 
 # Page settings
 st.set_page_config(
@@ -152,5 +142,6 @@ if predict:
         </p>
     </div>
     """, unsafe_allow_html=True)
+
 
 
